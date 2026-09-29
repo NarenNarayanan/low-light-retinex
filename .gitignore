@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated outputs (keep folder structure via .gitkeep)
+data/output/*
+!data/output/.gitkeep
+results/qualitative/*
+!results/qualitative/.gitkeep
+results/quantitative/*
+!results/quantitative/.gitkeep
+
+# Large local datasets (LIME / NPE / MEF)
+data/input/*
+!data/input/.gitkeep
