@@ -17,7 +17,7 @@ enhancement:
   clahe_tile_grid_size: null
 
 denoising:
-  dark_threshold: null          # dark-region mask threshold on enhanced V
-  nlm_h: null                   # Fast NLM filter strength
-  nlm_template_window_size: null
-  nlm_search_window_size: null
+  dark_threshold: 0.3           # conservative threshold for pixels treated as very dark
+  nlm_h: 10.0                   # Fast NLM filter strength tuned for stronger denoising inside dark regions
+  nlm_template_window_size: 7   # OpenCV recommended template window size
+  nlm_search_window_size: 21    # OpenCV recommended search window size
