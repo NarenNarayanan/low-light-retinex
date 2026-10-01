@@ -1,4 +1,4 @@
-"""Illumination enhancement (Task 3 - owner: Sarvesh S).
+"""Illumination enhancement.
 
 Contract:
     enhance_illumination(illumination, ...) -> enhanced_v
@@ -12,5 +12,5 @@ import numpy as np
 
 
 def enhance_illumination(illumination: np.ndarray, **kwargs) -> np.ndarray:
-    """TODO (Sarvesh): adaptive gamma correction + CLAHE."""
-    raise NotImplementedError("TODO: owned by Sarvesh S")
+    """TODO: adaptive gamma correction + CLAHE."""
+    raise NotImplementedError("Not implemented yet")

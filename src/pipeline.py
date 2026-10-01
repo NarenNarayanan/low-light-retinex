@@ -1,11 +1,11 @@
-"""End-to-end pipeline orchestration (owner: Naren Narayanan P S).
+"""End-to-end pipeline orchestration.
 
 Intended flow:
     load -> preprocess -> mean V + alpha/beta -> Retinex -> gamma + CLAHE
          -> dark mask -> selective Fast NLM -> HSV->RGB -> metrics
 
-Current state: a skeleton that runs Task 1 (preprocessing, mean V, alpha/beta) and
-stops cleanly before the modules owned by other members.
+Current state: a skeleton that runs preprocessing, mean V and alpha/beta, and stops
+cleanly before the later stages, which are not wired in yet.
 """
 from __future__ import annotations
 
@@ -57,14 +57,14 @@ def run_pipeline(input_path: str | Path) -> dict:
     mean_v = calculate_mean_v(preprocessed.v)
     alpha, beta = initialize_retinex_parameters(mean_v)
 
-    # Future member modules (not implemented here - owned by other members):
-    # illumination, reflectance = retinex_decompose(preprocessed.v, alpha, beta, ...)  # Dhinesh
-    # enhanced_v = enhance_illumination(illumination, ...)                             # Sarvesh
-    # dark_mask = detect_dark_regions(enhanced_v, ...); denoised_v = denoise_dark_regions(enhanced_v, dark_mask, ...)  # Syam
-    # enhanced_rgb = reconstruct_image(preprocessed.h, preprocessed.s, denoised_v)     # Syam
+    # Later stages (not wired in yet):
+    # illumination, reflectance = retinex_decompose(preprocessed.v, alpha, beta, ...)
+    # enhanced_v = enhance_illumination(illumination, ...)
+    # dark_mask = detect_dark_regions(enhanced_v, ...); denoised_v = denoise_dark_regions(enhanced_v, dark_mask, ...)
+    # enhanced_rgb = reconstruct_image(preprocessed.h, preprocessed.s, denoised_v)
 
     logger.info(
-        "Stage 1 done in %.3fs (mean_v=%.4f, alpha=%.6f, beta=%.6f)",
+        "Preprocessing done in %.3fs (mean_v=%.4f, alpha=%.6f, beta=%.6f)",
         time.perf_counter() - start, mean_v, alpha, beta,
     )
     return {

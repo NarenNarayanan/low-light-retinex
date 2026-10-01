@@ -1,4 +1,4 @@
-"""Final color reconstruction (Task 4 - owner: Chitteti Syam).
+"""Final color reconstruction.
 
 Contract:
     reconstruct_image(h, s, denoised_v) -> enhanced_rgb
@@ -11,5 +11,5 @@ import numpy as np
 
 
 def reconstruct_image(h: np.ndarray, s: np.ndarray, denoised_v: np.ndarray) -> np.ndarray:
-    """TODO (Syam): HSV recombination and conversion back to RGB."""
-    raise NotImplementedError("TODO: owned by Chitteti Syam")
+    """TODO: HSV recombination and conversion back to RGB."""
+    raise NotImplementedError("Not implemented yet")

@@ -1,4 +1,4 @@
-"""Input preprocessing (Task 1 - owner: Naren Narayanan P S).
+"""Input preprocessing.
 
 Responsibilities:
     * image validation
@@ -142,7 +142,7 @@ def rgb_to_hsv_channels(rgb: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.nda
 
 
 def preprocess_image(image_bgr: np.ndarray) -> PreprocessedImage:
-    """Run Task 1: validate -> BGR->RGB float32 -> initial denoise hook -> HSV split.
+    """Run preprocessing: validate -> BGR->RGB float32 -> initial denoise hook -> HSV split.
 
     No Retinex or enhancement happens here. The input array is not modified.
     """

@@ -5,7 +5,7 @@ Usage:
 
 Currently runs only the implemented stages (preprocessing, mean V, alpha/beta) and
 prints their values; the Retinex, enhancement, denoising and reconstruction stages
-are owned by other members and not wired in yet.
+are not wired in yet.
 """
 import argparse
 import logging

@@ -1,23 +1,22 @@
-# Default configuration (placeholders only).
-# Each member fills in the values for the module they own.
-# Values marked null are intentionally unset until that member implements them.
+# Default configuration.
+# Values marked null are intentionally unset until the corresponding module is implemented.
 
 pipeline:
   save_intermediates: false     # input, V, illumination, reflectance, gamma, CLAHE, mask, denoised, final
   output_dir: data/output
   output_format: png            # lossless format
 
-retinex:                        # owner: Dhinesh Babu C M
-  epsilon: null                 # small positive constant to avoid division by zero
-  max_iterations: null
-  tolerance: null               # convergence threshold
+retinex:
+  epsilon: 0.001                # small positive constant to avoid division by zero (assumption, not in report)
+  max_iterations: 50            # iteration cap (assumption, not in report)
+  tolerance: 0.0001             # stop when max |change| in T and R falls below this (assumption)
   # alpha and beta come from initialize_retinex_parameters(mean_v), not from this file
 
-enhancement:                    # owner: Sarvesh S
+enhancement:
   clahe_clip_limit: null
   clahe_tile_grid_size: null
 
-denoising:                      # owner: Chitteti Syam
+denoising:
   dark_threshold: null          # dark-region mask threshold on enhanced V
   nlm_h: null                   # Fast NLM filter strength
   nlm_template_window_size: null

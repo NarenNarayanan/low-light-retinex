@@ -1,8 +1,8 @@
-"""Retinex helper utilities (selected Task 2 utilities - owner: Naren Narayanan P S).
+"""Retinex helper utilities.
 
 Contains only the shared helpers: mean V, adaptive alpha/beta initialization and
-Sobel terms. The iterative Retinex update (T^(k+1), R^(k+1)) lives in retinex.py,
-which is owned by Dhinesh. This module must not import retinex.py.
+Sobel terms. The iterative Retinex update (T^(k+1), R^(k+1)) lives in retinex.py.
+This module must not import retinex.py.
 """
 from __future__ import annotations
 

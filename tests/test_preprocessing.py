@@ -1,4 +1,4 @@
-"""Tests for src/preprocessing.py (Task 1)."""
+"""Tests for src/preprocessing.py."""
 import importlib
 import sys
 from pathlib import Path
