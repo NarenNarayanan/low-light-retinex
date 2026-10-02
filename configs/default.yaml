@@ -13,8 +13,8 @@ retinex:
   # alpha and beta come from initialize_retinex_parameters(mean_v), not from this file
 
 enhancement:
-  clahe_clip_limit: null
-  clahe_tile_grid_size: null
+  clahe_clip_limit: 2.0
+  clahe_tile_grid_size: [8, 8]
 
 denoising:
   dark_threshold: 0.3           # conservative threshold for pixels treated as very dark
