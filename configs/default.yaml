@@ -1,23 +1,23 @@
-# Default configuration.
-# Values marked null are intentionally unset until the corresponding module is implemented.
+# Default configuration, loaded once by src/pipeline.py and passed to each stage as explicit arguments.
+# Names are translated to function arguments in the pipeline (e.g. nlm_h -> h, dark_threshold -> threshold).
 
 pipeline:
-  save_intermediates: false     # input, V, illumination, reflectance, gamma, CLAHE, mask, denoised, final
-  output_dir: data/output
-  output_format: png            # lossless format
+  save_intermediates: false     # also save V, illumination, reflectance, gamma, CLAHE, mask, denoised V, final
+  output_dir: data/output       # created automatically; relative paths are relative to the working directory
+  output_format: png            # lossless format: png, bmp or tiff
 
 retinex:
-  epsilon: 0.001                # small positive constant to avoid division by zero (assumption, not in report)
-  max_iterations: 50            # iteration cap (assumption, not in report)
-  tolerance: 0.0001             # stop when max |change| in T and R falls below this (assumption)
+  epsilon: 0.001                # keeps every denominator positive (value chosen; the report gives none)
+  max_iterations: 50            # iteration cap (value chosen; the report gives none)
+  tolerance: 0.0001             # stop when the largest change in T and R falls below this (value chosen)
   # alpha and beta come from initialize_retinex_parameters(mean_v), not from this file
 
 enhancement:
-  clahe_clip_limit: null
-  clahe_tile_grid_size: null
+  clahe_clip_limit: 2.0         # contrast limit of CLAHE (conventional value; the report gives none)
+  clahe_tile_grid_size: [8, 8]  # CLAHE tiles as [rows, columns]
 
 denoising:
-  dark_threshold: null          # dark-region mask threshold on enhanced V
-  nlm_h: null                   # Fast NLM filter strength
-  nlm_template_window_size: null
-  nlm_search_window_size: null
+  dark_threshold: 0.3           # pixels with enhanced V below this are treated as dark and denoised
+  nlm_h: 10.0                   # Fast NLM filter strength (higher removes more noise and more fine detail)
+  nlm_template_window_size: 7   # OpenCV recommended template window size
+  nlm_search_window_size: 21    # OpenCV recommended search window size
